@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Text, TextInput, Button } from 'react-native'
+import { createStackNavigator } from 'react-navigation'
 
-import LoginForm from './LoginForm'
+class LoginScreen extends Component {
 
-export default class Login extends Component {
+    static navigationOptions = {
+        header: null
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -11,17 +15,33 @@ export default class Login extends Component {
                     <Text style={styles.logo}>LOGO</Text>
                 </View>
                 <View style={styles.formContainer}>
-                    <LoginForm />
+                    <TextInput
+                        placeholder="Usuário ou Email"
+                        placeholderTextColor="rgba(255,255,255,0.7)"
+                        style={styles.input}
+                    />
+                    <TextInput
+                        placeholder="Senha"
+                        placeholderTextColor="rgba(255,255,255,0.7)"
+                        style={styles.input}
+                    />
+                    <Button color='#009094' title="Entrar" onPress={() => this.props.navigation.navigate('Home')} />
                 </View>
             </View>
         )
     }
 }
 
+export default createStackNavigator({
+    Login: {
+        screen: LoginScreen
+    },
+})
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#47c2c5',
+        backgroundColor: '#00CAC9',
     },
     logoContainer: {
         alignItems: 'center',
@@ -30,5 +50,15 @@ const styles = StyleSheet.create({
     },
     logo: {
         color: 'white',
-    }
+    },
+    formContainer: {
+        padding: 20,
+        paddingBottom: 200
+    },
+    input: {
+        height: 40,
+        marginBottom: 20,
+        color: 'white',
+        paddingHorizontal: 10
+    },   
 })
