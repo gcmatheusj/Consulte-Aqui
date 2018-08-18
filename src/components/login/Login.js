@@ -1,6 +1,16 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, TextInput, Button } from 'react-native'
+import { 
+        StyleSheet, 
+        View, 
+        Text, 
+        TextInput, 
+        Button, 
+        Image,
+        StatusBar 
+        } from 'react-native'
 import { createStackNavigator } from 'react-navigation'
+
+import logo from '../../assets/consulte-aqui.png'
 
 class LoginScreen extends Component {
 
@@ -12,7 +22,10 @@ class LoginScreen extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.logoContainer}>
-                    <Text style={styles.logo}>LOGO</Text>
+                    <Image 
+                        style={styles.logo} 
+                        source={logo} 
+                    />
                 </View>
                 <View style={styles.formContainer}>
                     <TextInput
@@ -46,10 +59,13 @@ const styles = StyleSheet.create({
     logoContainer: {
         alignItems: 'center',
         justifyContent: 'center',
-        flexGrow: 1
+        flexGrow: 1,
+        paddingTop: 100,
+        paddingBottom: 20
     },
     logo: {
-        color: 'white',
+        width: 200,
+        height: 150
     },
     formContainer: {
         padding: 20,
@@ -59,6 +75,8 @@ const styles = StyleSheet.create({
         height: 40,
         marginBottom: 20,
         color: 'white',
-        paddingHorizontal: 10
+        paddingHorizontal: 10,
+        fontSize: 15,
+        fontWeight: 'bold'
     },   
 })

@@ -16,6 +16,8 @@ export default class App extends Component {
 const AppStackNavigator = createStackNavigator({
   Login: LoginScreen,
   Home: HomeScreen
+}, {
+  headerMode: 'none'
 })
 
 const styles = StyleSheet.create({
