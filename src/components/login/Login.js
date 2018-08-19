@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import { 
-        StyleSheet, 
-        View, 
-        Text, 
-        TextInput, 
-        Button, 
-        Image,
-        StatusBar 
-        } from 'react-native'
+import {
+    StyleSheet,
+    View,
+    Text,
+    TextInput,
+    Button,
+    Image,
+    ScrollView
+} from 'react-native'
 import { createStackNavigator } from 'react-navigation'
 
 import logo from '../../assets/consulte-aqui.png'
@@ -20,27 +20,29 @@ class LoginScreen extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <View style={styles.logoContainer}>
-                    <Image 
-                        style={styles.logo} 
-                        source={logo} 
-                    />
+            <ScrollView>
+                <View style={styles.container}>
+                    <View style={styles.logoContainer}>
+                        <Image
+                            style={styles.logo}
+                            source={logo}
+                        />
+                    </View>
+                    <View style={styles.formContainer}>
+                        <TextInput
+                            placeholder="Usuário ou Email"
+                            placeholderTextColor="rgba(255,255,255,0.7)"
+                            style={styles.input}
+                        />
+                        <TextInput
+                            placeholder="Senha"
+                            placeholderTextColor="rgba(255,255,255,0.7)"
+                            style={styles.input}
+                        />
+                        <Button color='#009094' title="Entrar" onPress={() => this.props.navigation.navigate('Home')} />
+                    </View>
                 </View>
-                <View style={styles.formContainer}>
-                    <TextInput
-                        placeholder="Usuário ou Email"
-                        placeholderTextColor="rgba(255,255,255,0.7)"
-                        style={styles.input}
-                    />
-                    <TextInput
-                        placeholder="Senha"
-                        placeholderTextColor="rgba(255,255,255,0.7)"
-                        style={styles.input}
-                    />
-                    <Button color='#009094' title="Entrar" onPress={() => this.props.navigation.navigate('Home')} />
-                </View>
-            </View>
+            </ScrollView>
         )
     }
 }
@@ -78,5 +80,5 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         fontSize: 15,
         fontWeight: 'bold'
-    },   
+    },
 })

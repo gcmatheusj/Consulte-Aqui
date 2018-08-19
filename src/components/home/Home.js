@@ -1,18 +1,15 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text} from 'react-native'
-import { createStackNavigator } from 'react-navigation'
+import { StyleSheet, View, Text } from 'react-native'
+import { createStackNavigator, createDrawerNavigator } from 'react-navigation'
+
+import ConsultaScreen from '../consultas/Consultas'
+import ExameScreen from '../exames/Exames'
 
 class HomeScreen extends Component {
-
-    static navigationOptions = {
-        header: null
-    }
-
+    
     render(){
         return(
-            <View style={Styles.container}>
-                <Text style={Styles.Home}>Home Screen</Text>
-            </View>
+            <DrawerMenu></DrawerMenu>
         )
     }
 }
@@ -21,6 +18,15 @@ export default createStackNavigator({
     Home: {
         screen: HomeScreen,
     },
+})
+
+const DrawerMenu = createDrawerNavigator({
+    Consultas: {
+        screen: ConsultaScreen,
+    },
+    Exames: {
+        screen: ExameScreen
+    }
 })
 
 const Styles = StyleSheet.create({
