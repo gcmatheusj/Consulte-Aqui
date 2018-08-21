@@ -6,7 +6,10 @@ import ConsultaScreen from '../consultas/Consultas'
 import ExameScreen from '../exames/Exames'
 
 class HomeScreen extends Component {
-    
+    static navigationOptions = {
+        header: null,  
+    }
+
     render(){
         return(
             <DrawerMenu></DrawerMenu>
@@ -26,14 +29,11 @@ const DrawerMenu = createDrawerNavigator({
     },
     Exames: {
         screen: ExameScreen
-    }
+    },    
 })
 
 const Styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    Home: {
-        
-    }
 })

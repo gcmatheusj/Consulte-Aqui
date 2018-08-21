@@ -6,7 +6,8 @@ import {
     TextInput,
     Button,
     Image,
-    ScrollView
+    ScrollView,
+    TouchableOpacity
 } from 'react-native'
 import { createStackNavigator } from 'react-navigation'
 
@@ -15,7 +16,7 @@ import logo from '../../assets/consulte-aqui.png'
 class LoginScreen extends Component {
 
     static navigationOptions = {
-        header: null
+        header: false,
     }
 
     render() {
@@ -40,6 +41,9 @@ class LoginScreen extends Component {
                             style={styles.input}
                         />
                         <Button color='#009094' title="Entrar" onPress={() => this.props.navigation.navigate('Home')} />
+                        <TouchableOpacity style={styles.button}>
+                            <Text style={styles.txt_es}>ESQUECI MINHA SENHA</Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </ScrollView>
@@ -81,4 +85,12 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: 'bold'
     },
+    button: {
+        alignItems: 'center',
+        paddingTop: 20
+    },
+    txt_es: {
+        fontWeight: 'bold',
+        color: 'white',   
+    }
 })

@@ -6,9 +6,10 @@ import LoginScreen from './src/components/login/Login'
 import HomeScreen from './src/components/home/Home'
 
 export default class App extends Component {
+
   render() {
     return (
-      <AppStackNavigator style={styles.container}/>
+      <AppStackNavigator/>
     )
   }
 }
@@ -16,14 +17,16 @@ export default class App extends Component {
 const AppStackNavigator = createStackNavigator({
   Login: LoginScreen,
   Home: HomeScreen
-}, {
-  headerMode: 'none'
-})
+},
+{
+  initialRouteName: 'Login',
+},
+  {
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#00CAC9',
+      },
+    }
+  }
+)
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
