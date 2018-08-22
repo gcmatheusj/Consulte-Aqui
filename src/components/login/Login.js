@@ -10,15 +10,52 @@ import {
 } from 'react-native'
 import { createStackNavigator } from 'react-navigation'
 import { Font, AppLoading, Constants } from "expo"
+import * as firebase from 'firebase'
 
 import logo from '../../assets/consulte-aqui.png'
 import { Container, Form, Item, Label, Input, Button } from 'native-base';
+
+const firebaseConfig = {
+    apiKey: "AIzaSyC7K4Thh7Cv-wx4--kU4J1z8yxW5EH4Eyc",
+    authDomain: "consulte-aqui.firebaseapp.com",
+    databaseURL: "https://consulte-aqui.firebaseio.com",
+    projectId: "consulte-aqui",
+    storageBucket: "consulte-aqui.appspot.com",
+  }
+  
+  firebase.initializeApp(firebaseConfig);
 
 class LoginScreen extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            loading: true
+            loading: true,
+            email: '',
+            senha: ''
+        }
+    }
+
+    signUpUser = (email, senha) => {
+        try {
+           if(this.state.senha.length < 6) {
+               alert('Por favor, digite pelo menos 6 caracteres para senha')
+               return;
+           } 
+           firebase.auth().createUserWithEmailAndPassword(email, senha)
+        } catch (error) {
+            console.log(error.toString())
+        }
+    }
+
+    signInUser = (email, senha) => {
+        try {
+            firebase.auth().signInWithEmailAndPassword(email, senha)
+                .then(function (user) {
+                    console.log(user)
+                })
+                .then(this.props.navigation.navigate('Home'))
+        } catch (error) {
+            console.log(error.toString())
         }
     }
 
@@ -57,6 +94,7 @@ class LoginScreen extends Component {
                                 style={styles.input}
                                 autoCorrect={false}
                                 autoCapitalize='none'
+                                onChangeText={(email) => this.setState({ email })}
                             />
                         </Item>
                         <Item floatingLabel>
@@ -66,12 +104,16 @@ class LoginScreen extends Component {
                                 secureTextEntry={true}
                                 autoCorrect={false}
                                 autoCapitalize='none'
+                                onChangeText={(senha) => this.setState({ senha })}
                             />
                         </Item>
-                        <Button style={styles.button} full onPress={() => this.props.navigation.navigate('Home')}>
-                            <Text>ENTRAR</Text>
+                        <Button style={styles.button} full rounded onPress={() => { this.signInUser(this.state.email, this.state.senha)}}>
+                            <Text style={{ color: 'white', fontWeight: 'bold' }}>ENTRAR</Text>
                         </Button>
-                        <TouchableOpacity style={styles.button}>
+                        <Button style={{ backgroundColor: '#1565C0', marginTop: 15 }} full rounded onPress={() => { this.signUpUser(this.state.email, this.state.senha)}}>
+                            <Text style={{ color: 'white', fontWeight: 'bold' }}>CADASTRAR</Text>
+                        </Button>
+                        <TouchableOpacity style={styles.buttones}>
                             <Text style={styles.txt_es}>ESQUECI MINHA SENHA</Text>
                         </TouchableOpacity>
                     </Form>
@@ -95,8 +137,8 @@ const styles = StyleSheet.create({
     logoContainer: {
         alignItems: 'center',
         justifyContent: 'center',
-        flexGrow: 1,
-        paddingTop: 100,
+        flex: 1,
+        paddingTop: 70,
         paddingBottom: 20
     },
     logo: {
@@ -104,21 +146,26 @@ const styles = StyleSheet.create({
         height: 150
     },
     formContainer: {
+        flex: 1,
         padding: 20,
-        paddingBottom: 200
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingBottom: 150
     },
     input: {
-        height: 40,
-        marginBottom: 20,
+        marginBottom: 10,
         color: 'white',
-        paddingHorizontal: 10,
         fontSize: 15,
         fontWeight: 'bold'
     },
     button: {
         alignItems: 'center',
         marginTop: 20,
-        color: 'white'
+        backgroundColor: '#009898',
+    },
+    buttones:{
+        alignItems: 'center',
+        marginTop: 20,
     },
     txt_es: {
         fontWeight: 'bold',
