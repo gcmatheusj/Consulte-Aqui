@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, StatusBar } from 'react-native'
 import { createStackNavigator } from 'react-navigation'
-import { Font, AppLoading } from "expo"
+import { Font, AppLoading, Constants } from "expo"
 import { Icon, Button, Left, Header, Content, Container, Right, Body, Title } from 'native-base'
 
 class ConsultaScreen extends Component {
@@ -32,6 +32,9 @@ class ConsultaScreen extends Component {
         }
         return (
             <Container>
+                <View>
+                    <View style={styles.statusBar} />
+                </View>
                 <Header style={styles.header} >
                     <Left>
                         <Button transparent>
@@ -39,7 +42,7 @@ class ConsultaScreen extends Component {
                         </Button>
                     </Left>
                     <Body>
-                        <Title>Header</Title>
+                        <Title>Consultas</Title>
                     </Body>
                     <Right />
                 </Header>
@@ -63,4 +66,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
+    statusBar: {
+        backgroundColor: "#00CAC9",
+        height: Constants.statusBarHeight,
+    },
+    header: {
+        backgroundColor: '#00CAC9'
+    }
 })

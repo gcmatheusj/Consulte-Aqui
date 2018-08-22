@@ -4,24 +4,44 @@ import {
     View,
     Text,
     TextInput,
-    Button,
     Image,
     ScrollView,
     TouchableOpacity
 } from 'react-native'
 import { createStackNavigator } from 'react-navigation'
+import { Font, AppLoading, Constants } from "expo"
 
 import logo from '../../assets/consulte-aqui.png'
+import { Container, Form, Item, Label, Input, Button } from 'native-base';
 
 class LoginScreen extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            loading: true
+        }
+    }
+
+    async componentWillMount() {
+        await Font.loadAsync({
+            Roboto: require("native-base/Fonts/Roboto.ttf"),
+            Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
+        })
+        this.setState({
+            loading: false
+        })
+    }
 
     static navigationOptions = {
-        header: false,
+        header: null,
     }
 
     render() {
+        if (this.state.loading) {
+            return <AppLoading />
+        }
         return (
-            <ScrollView>
+            <Container>
                 <View style={styles.container}>
                     <View style={styles.logoContainer}>
                         <Image
@@ -29,24 +49,34 @@ class LoginScreen extends Component {
                             source={logo}
                         />
                     </View>
-                    <View style={styles.formContainer}>
-                        <TextInput
-                            placeholder="Usuário ou Email"
-                            placeholderTextColor="rgba(255,255,255,0.7)"
-                            style={styles.input}
-                        />
-                        <TextInput
-                            placeholder="Senha"
-                            placeholderTextColor="rgba(255,255,255,0.7)"
-                            style={styles.input}
-                        />
-                        <Button color='#009094' title="Entrar" onPress={() => this.props.navigation.navigate('Home')} />
+
+                    <Form style={styles.formContainer}>
+                        <Item floatingLabel>
+                            <Label style={{ color: 'white', fontWeight: 'bold' }}>Email</Label>
+                            <Input
+                                style={styles.input}
+                                autoCorrect={false}
+                                autoCapitalize='none'
+                            />
+                        </Item>
+                        <Item floatingLabel>
+                            <Label style={{ color: 'white', fontWeight: 'bold' }}>Senha</Label>
+                            <Input
+                                style={styles.input}
+                                secureTextEntry={true}
+                                autoCorrect={false}
+                                autoCapitalize='none'
+                            />
+                        </Item>
+                        <Button style={styles.button} full onPress={() => this.props.navigation.navigate('Home')}>
+                            <Text>ENTRAR</Text>
+                        </Button>
                         <TouchableOpacity style={styles.button}>
                             <Text style={styles.txt_es}>ESQUECI MINHA SENHA</Text>
                         </TouchableOpacity>
-                    </View>
+                    </Form>
                 </View>
-            </ScrollView>
+            </Container>
         )
     }
 }
@@ -87,10 +117,11 @@ const styles = StyleSheet.create({
     },
     button: {
         alignItems: 'center',
-        paddingTop: 20
+        marginTop: 20,
+        color: 'white'
     },
     txt_es: {
         fontWeight: 'bold',
-        color: 'white',   
+        color: 'white',
     }
 })
