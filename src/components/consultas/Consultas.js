@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { StyleSheet, View, Text, StatusBar } from 'react-native'
 import { createStackNavigator } from 'react-navigation'
 import { Font, AppLoading, Constants } from "expo"
-import { Icon, Button, Left, Header, Content, Container, Right, Body, Title } from 'native-base'
+import { Icon, Button, Left, Header, Content, Container, Right, Body, Title, Card, CardItem } from 'native-base'
+import { SearchBar } from 'react-native-elements'
 
 class ConsultaScreen extends Component {
     constructor(props) {
@@ -44,14 +45,92 @@ class ConsultaScreen extends Component {
                     <Body>
                         <Title>Consultas</Title>
                     </Body>
-                    <Right />
+
+                    <Right>
+                        <Button transparent>
+                            <Icon name='md-search'></Icon>
+                        </Button>
+                    </Right>
                 </Header>
                 <Content contentContainerStyle={{
-                    flex: 1,
-                    alignItems: 'center',
-                    justifyContent: 'center'
+                    padding: 5
+                    //: 1,
+                    //alignItems: 'center',
+                    //justifyContent: 'center'
                 }}>
-                    <Text>Consulta Screen</Text>
+                    <Title style={{ padding: 5, alignContent: 'center', justifyContent: 'center', color: 'gray', alignContent: 'center', justifyContent: 'center', fontSize: 18 }}>Especialidades Médicas</Title>
+                    <Card>
+                        <CardItem>
+                            <Body>
+                                <Title style={styles.especialidadeMed}>
+                                    Cardiologista
+                                </Title>
+                            </Body>
+                        </CardItem>
+                    </Card>
+                    <Card>
+                        <CardItem>
+                            <Body>
+                                <Title style={styles.especialidadeMed}>
+                                    Cirurgião Plástico
+                                </Title>
+                            </Body>
+                        </CardItem>
+                    </Card>
+                    <Card>
+                        <CardItem>
+                            <Body>
+                                <Title style={styles.especialidadeMed}>
+                                    Clínico Geral
+                                </Title>
+                            </Body>
+                        </CardItem>
+                    </Card>
+                    <Card>
+                        <CardItem>
+                            <Body>
+                                <Title style={styles.especialidadeMed}>
+                                    Dentista
+                                </Title>
+                            </Body>
+                        </CardItem>
+                    </Card>
+                    <Card>
+                        <CardItem>
+                            <Body>
+                                <Title style={styles.especialidadeMed}>
+                                    Dermatologista
+                                </Title>
+                            </Body>
+                        </CardItem>
+                    </Card>
+                    <Card>
+                        <CardItem>
+                            <Body>
+                                <Title style={styles.especialidadeMed}>
+                                    Fisioterapeuta
+                                </Title>
+                            </Body>
+                        </CardItem>
+                    </Card>
+                    <Card>
+                        <CardItem>
+                            <Body>
+                                <Title style={styles.especialidadeMed}>
+                                    Genicologista
+                                </Title>
+                            </Body>
+                        </CardItem>
+                    </Card>
+                    <Card>
+                        <CardItem>
+                            <Body>
+                                <Title style={styles.especialidadeMed}>
+                                    Nutricionista
+                                </Title>
+                            </Body>
+                        </CardItem>
+                    </Card>
                 </Content>
             </Container>
         )
@@ -71,6 +150,13 @@ const styles = StyleSheet.create({
         height: Constants.statusBarHeight,
     },
     header: {
-        backgroundColor: '#00CAC9'
+        backgroundColor: '#00CAC9',
+    },
+    search: {
+        height: 10
+    },
+    especialidadeMed: {
+        color: 'gray',
+        fontSize: 14
     }
 })

@@ -42,6 +42,7 @@ class LoginScreen extends Component {
                return;
            } 
            firebase.auth().createUserWithEmailAndPassword(email, senha)
+           alert('Cadastro realizado com sucesso!')
         } catch (error) {
             console.log(error.toString())
         }
@@ -51,7 +52,6 @@ class LoginScreen extends Component {
         try {
             firebase.auth().signInWithEmailAndPassword(email, senha)
                 .then(function (user) {
-                    console.log(user)
                 })
                 .then(this.props.navigation.navigate('Home'))
         } catch (error) {
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
         padding: 20,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingBottom: 150
+        paddingBottom: 120
     },
     input: {
         marginBottom: 10,
