@@ -25,7 +25,7 @@ class CadastroClienteScreen extends Component {
                 <Header style={styles.header} >
                     <Left>
                         <Button transparent>
-                            <Icon name='ios-arrow-back-outline' onPress={() => this.props.navigation.openDrawer()}></Icon>
+                            <Icon name='ios-arrow-back-outline' onPress={() => this.props.navigation.navigate('Login')}></Icon>
                         </Button>
                     </Left>
                     <Body>
@@ -34,7 +34,7 @@ class CadastroClienteScreen extends Component {
                 </Header>
                 <Form style={styles.formContainer}>
                     <Item floatingLabel>
-                        <Label style={{ color: 'black', fontWeight: 'bold' }}>Nome Completo</Label>
+                        <Label style={{ color: 'gray', fontWeight: 'bold' }}>Nome Completo</Label>
                         <Input
                             style={styles.input}
                             autoCorrect={false}
@@ -43,7 +43,7 @@ class CadastroClienteScreen extends Component {
                         />
                     </Item>
                     <Item floatingLabel>
-                        <Label style={{ color: 'black', fontWeight: 'bold' }}>CPF</Label>
+                        <Label style={{ color: 'gray', fontWeight: 'bold' }}>CPF</Label>
                         <Input
                             style={styles.input}
                             secureTextEntry={true}
@@ -53,7 +53,7 @@ class CadastroClienteScreen extends Component {
                         />
                     </Item>
                     <Item floatingLabel>
-                        <Label style={{ color: 'black', fontWeight: 'bold' }}>Senha</Label>
+                        <Label style={{ color: 'gray', fontWeight: 'bold' }}>Senha</Label>
                         <Input
                             style={styles.input}
                             autoCorrect={false}
@@ -62,7 +62,7 @@ class CadastroClienteScreen extends Component {
                         />
                     </Item>
                     <Item floatingLabel>
-                        <Label style={{ color: 'black', fontWeight: 'bold' }}>Confirmar Senha</Label>
+                        <Label style={{ color: 'gray', fontWeight: 'bold' }}>Confirmar Senha</Label>
                         <Input
                             style={styles.input}
                             secureTextEntry={true}
@@ -72,6 +72,7 @@ class CadastroClienteScreen extends Component {
                         />
                     </Item>
                     <Button style={styles.button} full rounded onPress={() => this.props.navigation.navigate('Home') /*{ this.signInUser(this.state.email, this.state.senha)}*/}>
+                        
                         <Text style={{ color: 'white', fontWeight: 'bold' }}>CADASTRAR</Text>
                     </Button>
                 </Form>
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#00CAC9',
     },
     formContainer: {
-        flex: 1,
+        //flex: 1,
         padding: 20,
         alignItems: 'center',
         justifyContent: 'center',
@@ -107,7 +108,7 @@ const styles = StyleSheet.create({
     },
     input: {
         marginBottom: 10,
-        color: 'black',
+        color: 'gray',
         fontSize: 15,
         fontWeight: 'bold'
     },
@@ -116,12 +117,12 @@ const styles = StyleSheet.create({
         marginTop: 20,
         backgroundColor: '#009898',
     },
-    buttones:{
+    buttones: {
         alignItems: 'center',
         marginTop: 20,
     },
     txt_es: {
         fontWeight: 'bold',
-        color: 'black',
+        color: 'gray',
     }
 })

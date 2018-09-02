@@ -13,7 +13,7 @@ import { Font, AppLoading, Constants } from "expo"
 import * as firebase from 'firebase'
 
 import logo from '../../assets/consulte-aqui.png'
-import { Container, Form, Item, Label, Input, Button } from 'native-base';
+import { Container, Form, Item, Label, Input, Button, Icon, Left } from 'native-base';
 
 const firebaseConfig = {
     apiKey: "AIzaSyC7K4Thh7Cv-wx4--kU4J1z8yxW5EH4Eyc",
@@ -89,9 +89,11 @@ class LoginScreen extends Component {
 
                     <View style={styles.formContainer}>
                         <Button style={styles.button} full rounded onPress={() => this.props.navigation.navigate('Entrar') /*{ this.signInUser(this.state.email, this.state.senha)}*/}>
+                            <Icon name="md-mail" ></Icon>
                             <Text style={{ color: 'white', fontWeight: 'bold' }}>ENTRAR COM EMAIL</Text>
                         </Button>
-        <Button style={{ backgroundColor: '#1565C0', marginTop: 15 }} full rounded onPress={() => this.props.navigation.navigate('CadastroCli') /*this.signUpUser(this.state.email, this.state.senha)}*/}>
+                        <Button style={{ backgroundColor: '#1565C0', marginTop: 15 }} full rounded onPress={() => this.props.navigation.navigate('CadastroCli') /*this.signUpUser(this.state.email, this.state.senha)}*/}>
+                            <Icon name="person-add" ></Icon>
                             <Text style={{ color: 'white', fontWeight: 'bold' }}>CADASTRAR</Text>
                         </Button>
                     </View>
