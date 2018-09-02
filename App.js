@@ -5,8 +5,8 @@ import { createStackNavigator } from 'react-navigation'
 
 import LoginScreen from './src/components/login/Login'
 import HomeScreen from './src/components/home/Home'
-
-
+import EntrarScreen from './src/components/entrar/Entrar'
+import CadastroClienteScreen from './src/components/cadastro/CadastroPaciente'
 
 export default class App extends Component {
 
@@ -19,7 +19,9 @@ export default class App extends Component {
 
 const AppStackNavigator = createStackNavigator({
   Login: LoginScreen,
-  Home: HomeScreen
+  Home: HomeScreen,
+  Entrar: EntrarScreen,
+  CadastroCli: CadastroClienteScreen
 },
 {
   initialRouteName: 'Login',

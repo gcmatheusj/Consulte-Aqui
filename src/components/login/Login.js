@@ -87,36 +87,14 @@ class LoginScreen extends Component {
                         />
                     </View>
 
-                    <Form style={styles.formContainer}>
-                        <Item floatingLabel>
-                            <Label style={{ color: 'white', fontWeight: 'bold' }}>Email</Label>
-                            <Input
-                                style={styles.input}
-                                autoCorrect={false}
-                                autoCapitalize='none'
-                                onChangeText={(email) => this.setState({ email })}
-                            />
-                        </Item>
-                        <Item floatingLabel>
-                            <Label style={{ color: 'white', fontWeight: 'bold' }}>Senha</Label>
-                            <Input
-                                style={styles.input}
-                                secureTextEntry={true}
-                                autoCorrect={false}
-                                autoCapitalize='none'
-                                onChangeText={(senha) => this.setState({ senha })}
-                            />
-                        </Item>
-                        <Button style={styles.button} full rounded onPress={() => { this.signInUser(this.state.email, this.state.senha)}}>
-                            <Text style={{ color: 'white', fontWeight: 'bold' }}>ENTRAR</Text>
+                    <View style={styles.formContainer}>
+                        <Button style={styles.button} full rounded onPress={() => this.props.navigation.navigate('Entrar') /*{ this.signInUser(this.state.email, this.state.senha)}*/}>
+                            <Text style={{ color: 'white', fontWeight: 'bold' }}>ENTRAR COM EMAIL</Text>
                         </Button>
-                        <Button style={{ backgroundColor: '#1565C0', marginTop: 15 }} full rounded onPress={() => { this.signUpUser(this.state.email, this.state.senha)}}>
+        <Button style={{ backgroundColor: '#1565C0', marginTop: 15 }} full rounded onPress={() => this.props.navigation.navigate('CadastroCli') /*this.signUpUser(this.state.email, this.state.senha)}*/}>
                             <Text style={{ color: 'white', fontWeight: 'bold' }}>CADASTRAR</Text>
                         </Button>
-                        <TouchableOpacity style={styles.buttones}>
-                            <Text style={styles.txt_es}>ESQUECI MINHA SENHA</Text>
-                        </TouchableOpacity>
-                    </Form>
+                    </View>
                 </View>
             </Container>
         )

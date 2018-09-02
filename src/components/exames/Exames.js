@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import { createStackNavigator } from 'react-navigation'
 import { Font, AppLoading, Constants } from "expo"
-import { Icon, Button, Left, Header, Content, Container, Body, Title, Right } from 'native-base'
+import { Icon, Button, Left, Header, Content, Container, Body, Title, Right, Card, CardItem } from 'native-base'
+import { SearchBar } from 'react-native-elements'
 
 class ExameScreen extends Component {
     constructor(props) {
@@ -39,14 +40,100 @@ class ExameScreen extends Component {
                     <Body>
                         <Title>Exames</Title>
                     </Body>
-                    <Right />
+                    <Right>
+                        <Button transparent>
+                            <Icon name='md-search'></Icon>
+                        </Button>
+                    </Right>
                 </Header>
                 <Content contentContainerStyle={{
-                    flex: 1,
-                    alignItems: 'center',
-                    justifyContent: 'center'
+                    padding: 5
+                    //flex: 1,
+                    //alignItems: 'center',
+                    //justifyContent: 'center'
                 }}>
-                    <Text>Exame Screen</Text>
+                    <Title style={{ padding: 5, alignContent: 'center', justifyContent: 'center', color: 'gray', alignContent: 'center', justifyContent: 'center', fontSize: 18 }}>Lista de Especialidades</Title>
+                    <Card>
+                        <CardItem>
+                            <Body>
+                                <Title style={styles.exameEspecialidade}>
+                                    Eletrocardiograma
+                                </Title>
+                            </Body>
+                        </CardItem>
+                    </Card>
+                    <Card>
+                        <CardItem>
+                            <Body>
+                                <Title style={styles.exameEspecialidade}>
+                                    Eletroencefalograma
+                                </Title>
+                            </Body>
+                        </CardItem>
+                    </Card>
+                    <Card>
+                        <CardItem>
+                            <Body>
+                                <Title style={styles.exameEspecialidade}>
+                                    Endoscopia Digestiva
+                                </Title>
+                            </Body>
+                        </CardItem>
+                    </Card>
+                    <Card>
+                        <CardItem>
+                            <Body>
+                                <Title style={styles.exameEspecialidade}>
+                                    Sangue
+                                </Title>
+                            </Body>
+                        </CardItem>
+                    </Card>
+                    <Card>
+                        <CardItem>
+                            <Body>
+                                <Title style={styles.exameEspecialidade}>
+                                    Fezes e Urina
+                                </Title>
+                            </Body>
+                        </CardItem>
+                    </Card>
+                    <Card>
+                        <CardItem>
+                            <Body>
+                                <Title style={styles.exameEspecialidade}>
+                                    Radiologia
+                                </Title>
+                            </Body>
+                        </CardItem>
+                    </Card>
+                    <Card>
+                        <CardItem>
+                            <Body>
+                                <Title style={styles.exameEspecialidade}>
+                                    Teste Ergométrico
+                                </Title>
+                            </Body>
+                        </CardItem>
+                    </Card>
+                    <Card>
+                        <CardItem>
+                            <Body>
+                                <Title style={styles.exameEspecialidade}>
+                                    Ultrassonografia
+                                </Title>
+                            </Body>
+                        </CardItem>
+                    </Card>
+                    <Card>
+                        <CardItem>
+                            <Body>
+                                <Title style={styles.exameEspecialidade}>
+                                    Avaliação Fisioterapêutica
+                                </Title>
+                            </Body>
+                        </CardItem>
+                    </Card>
                 </Content>
             </Container>
         )
@@ -67,5 +154,12 @@ const styles = StyleSheet.create({
     },
     header: {
         backgroundColor: '#00CAC9'
+    },
+    search: {
+        height: 10
+    },
+    exameEspecialidade: {
+        color: 'gray',
+        fontSize: 14
     }
 })
