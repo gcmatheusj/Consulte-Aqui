@@ -52,9 +52,8 @@ class EntrarScreen extends Component {
                             onChangeText={(senha) => this.setState({ senha })}
                         />
                     </Item>
-                    <Button style={styles.button} full rounded onPress={() => this.props.navigation.navigate('Home') /*{ this.signInUser(this.state.email, this.state.senha)}*/}>
-                    <Text style={{ color: 'white', fontWeight: 'bold' }}>ENTRAR</Text>
-                    <Icon name="log-in" ></Icon>
+                    <Button style={styles.button} full rounded onPress={() => this.props.navigation.navigate('Home')}>
+                        <Text style={{ color: 'white', fontWeight: 'bold', }}>ENTRAR</Text>
                     </Button>
                     <TouchableOpacity style={styles.buttones}>
                         <Text style={styles.txt_es}>ESQUECI MINHA SENHA</Text>
@@ -99,9 +98,9 @@ const styles = StyleSheet.create({
     button: {
         alignItems: 'center',
         marginTop: 20,
-        backgroundColor: '#009898',
+        backgroundColor: '#00CAC9',
     },
-    buttones:{
+    buttones: {
         alignItems: 'center',
         marginTop: 20,
     },

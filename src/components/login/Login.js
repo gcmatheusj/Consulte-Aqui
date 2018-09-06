@@ -88,13 +88,25 @@ class LoginScreen extends Component {
                     </View>
 
                     <View style={styles.formContainer}>
-                        <Button style={styles.button} full rounded onPress={() => this.props.navigation.navigate('Entrar') /*{ this.signInUser(this.state.email, this.state.senha)}*/}>
-                            <Icon name="md-mail" ></Icon>
-                            <Text style={{ color: 'white', fontWeight: 'bold' }}>ENTRAR COM EMAIL</Text>
+                        <Button style={styles.button} full rounded onPress={() => this.props.navigation.navigate('Entrar')}>
+                            <Icon name="mail"></Icon>
+                            <Text style={{ color: 'white', fontWeight: 'bold', flex: 1}}>ENTRAR COM EMAIL</Text>
+                            <Icon name="ios-arrow-forward"></Icon>
                         </Button>
-                        <Button style={{ backgroundColor: '#1565C0', marginTop: 15 }} full rounded onPress={() => this.props.navigation.navigate('CadastroCli') /*this.signUpUser(this.state.email, this.state.senha)}*/}>
-                            <Icon name="person-add" ></Icon>
-                            <Text style={{ color: 'white', fontWeight: 'bold' }}>CADASTRAR</Text>
+                        <Button style={styles.button} full rounded onPress={() => this.props.navigation.navigate('Entrar')}>
+                            <Icon name="logo-facebook"></Icon>
+                            <Text style={{ color: 'white', fontWeight: 'bold', flex: 1}}>CONTINUAR COM FACEBOOK</Text>
+                            <Icon name="ios-arrow-forward"></Icon>
+                        </Button>
+                        <Button style={styles.button} full rounded onPress={() => this.props.navigation.navigate('Entrar')}>
+                            <Icon name="logo-google"></Icon>
+                            <Text style={{ color: 'white', fontWeight: 'bold', flex: 1}}>CONTINUAR COM GOOGLE</Text>
+                            <Icon name="ios-arrow-forward"></Icon>
+                        </Button>
+                        <Button style={{ backgroundColor: '#1565C0', marginTop: 15,}} full rounded onPress={() => this.props.navigation.navigate('CadastroCli') /*this.signUpUser(this.state.email, this.state.senha)}*/}>
+                            <Icon name="person"></Icon>
+                            <Text style={{ color: 'white', fontWeight: 'bold', flex: 1 }}>CADASTRAR</Text>
+                            <Icon name="ios-arrow-forward"></Icon>
                         </Button>
                     </View>
                 </View>
@@ -130,7 +142,7 @@ const styles = StyleSheet.create({
         padding: 20,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingBottom: 120
+        paddingBottom: 50
     },
     input: {
         marginBottom: 10,
@@ -139,9 +151,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     button: {
+        //flex: 1,
+        //justifyContent: 'flex-start',
         alignItems: 'center',
         marginTop: 20,
-        backgroundColor: '#009898',
+        backgroundColor: '#009898',   
     },
     buttones:{
         alignItems: 'center',

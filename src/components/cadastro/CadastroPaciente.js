@@ -28,7 +28,7 @@ class CadastroClienteScreen extends Component {
                             <Icon name='ios-arrow-back-outline' onPress={() => this.props.navigation.navigate('Login')}></Icon>
                         </Button>
                     </Left>
-                    <Body>
+                    <Body style={{flex: 1}}>
                         <Title>Cadastro</Title>
                     </Body>
                 </Header>
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     button: {
         alignItems: 'center',
         marginTop: 20,
-        backgroundColor: '#009898',
+        backgroundColor: '#00CAC9',
     },
     buttones: {
         alignItems: 'center',
