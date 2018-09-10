@@ -24,8 +24,8 @@ class CadastroClienteScreen extends Component {
                 </View>
                 <Header style={styles.header} >
                     <Left>
-                        <Button transparent>
-                            <Icon name='ios-arrow-back-outline' onPress={() => this.props.navigation.navigate('Login')}></Icon>
+                        <Button transparent onPress={() => this.props.navigation.navigate('Login')}>
+                            <Icon name='ios-arrow-back-outline'></Icon>
                         </Button>
                     </Left>
                     <Body style={{flex: 1}}>

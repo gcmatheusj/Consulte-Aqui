@@ -38,8 +38,8 @@ class ConsultaScreen extends Component {
                 </View>
                 <Header style={styles.header} >
                     <Left>
-                        <Button transparent>
-                            <Icon name='menu' onPress={() => this.props.navigation.openDrawer()}></Icon>
+                        <Button transparent onPress={() => this.props.navigation.openDrawer()}>
+                            <Icon name='menu'></Icon>
                         </Button>
                     </Left>
                     <Body>
