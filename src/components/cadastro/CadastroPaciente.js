@@ -1,21 +1,30 @@
 import React, { Component } from 'react'
-import {
-    StyleSheet,
-    View,
-    Text,
-    TextInput,
-    Image,
-    ScrollView,
-    TouchableOpacity
-} from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 import { createStackNavigator } from 'react-navigation'
 import { Font, AppLoading, Constants } from "expo"
 import { Icon, Form, Item, Label, Button, Input, Left, Header, Content, Container, Right, Body, Title, Card, CardItem } from 'native-base'
+import { database } from '../../../firebase'
 
 class CadastroClienteScreen extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            user: {}
+        }
+    }
+
     static navigationOptions = {
         header: null
     }
+    
+    signUpUser = user => {
+        if(user){
+            alert('Preencha todos os campos!')
+        }
+        const firebaseRef = database.ref('user/')
+        firebaseRef.push(user) 
+    }
+
     render() {
         return (
             <Container style={styles.container}>
@@ -28,9 +37,10 @@ class CadastroClienteScreen extends Component {
                             <Icon name='ios-arrow-back-outline'></Icon>
                         </Button>
                     </Left>
-                    <Body style={{flex: 1}}>
+                    <Body>
                         <Title>Cadastro</Title>
                     </Body>
+                    <Right />
                 </Header>
                 <Form style={styles.formContainer}>
                     <Item floatingLabel>
@@ -39,26 +49,27 @@ class CadastroClienteScreen extends Component {
                             style={styles.input}
                             autoCorrect={false}
                             autoCapitalize='none'
-                            onChangeText={(email) => this.setState({ email })}
+                            onChangeText={(name) => this.setState({ user: {...this.state.user, name: name} })}
                         />
                     </Item>
                     <Item floatingLabel>
                         <Label style={{ color: 'gray', fontWeight: 'bold' }}>CPF</Label>
                         <Input
                             style={styles.input}
-                            secureTextEntry={true}
+                            secureTextEntry={false}
                             autoCorrect={false}
                             autoCapitalize='none'
-                            onChangeText={(senha) => this.setState({ senha })}
+                            onChangeText={(cpf) => this.setState({ user: {...this.state.user, cpf: cpf} })}
                         />
                     </Item>
                     <Item floatingLabel>
                         <Label style={{ color: 'gray', fontWeight: 'bold' }}>Senha</Label>
                         <Input
                             style={styles.input}
+                            secureTextEntry={true}
                             autoCorrect={false}
                             autoCapitalize='none'
-                            onChangeText={(email) => this.setState({ email })}
+                            onChangeText={(password) => this.setState({ user: {...this.state.user, password: password} })}
                         />
                     </Item>
                     <Item floatingLabel>
@@ -68,11 +79,10 @@ class CadastroClienteScreen extends Component {
                             secureTextEntry={true}
                             autoCorrect={false}
                             autoCapitalize='none'
-                            onChangeText={(senha) => this.setState({ senha })}
+                            onChangeText={(confirmPassword) => this.setState({ user: {...this.state.user, confirmPassword: confirmPassword } })}
                         />
                     </Item>
-                    <Button style={styles.button} full rounded onPress={() => this.props.navigation.navigate('Home') /*{ this.signInUser(this.state.email, this.state.senha)}*/}>
-                        
+                    <Button style={styles.button} full rounded onPress={() => this.signUpUser(this.state.user) }> 
                         <Text style={{ color: 'white', fontWeight: 'bold' }}>CADASTRAR</Text>
                     </Button>
                 </Form>

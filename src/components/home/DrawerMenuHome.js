@@ -6,7 +6,7 @@ import ConsultaScreen from '../consultas/Consultas'
 import ExameScreen from '../exames/Exames'
 import logo from '../../assets/consulte-aqui-menu.png'
 
-class HomeScreen extends Component {
+class DrawerMenuHomeScreen extends Component {
     static navigationOptions = {
         header: null,
     }
@@ -20,7 +20,7 @@ class HomeScreen extends Component {
 
 export default createStackNavigator({
     Home: {
-        screen: HomeScreen,
+        screen: DrawerMenuHomeScreen,
     },
 })
 

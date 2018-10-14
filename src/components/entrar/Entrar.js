@@ -1,21 +1,32 @@
 import React, { Component } from 'react'
-import {
-    StyleSheet,
-    View,
-    Text,
-    TextInput,
-    Image,
-    ScrollView,
-    TouchableOpacity
-} from 'react-native'
+import { StyleSheet, View, Text, TextInput, Image, ScrollView, TouchableOpacity } from 'react-native'
 import { createStackNavigator } from 'react-navigation'
 import { Font, AppLoading, Constants } from "expo"
 import { Icon, Form, Item, Label, Button, Input, Left, Header, Content, Container, Right, Body, Title, Card, CardItem } from 'native-base'
+import { database } from '../../../firebase'
 
 class EntrarScreen extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            user: {}
+        }
+    }
+
     static navigationOptions = {
         header: null
     }
+
+    signIn = user => {
+        console.log('teste')
+        const firebaseRef = database.ref('user')
+        firebaseRef.orderByChild('name').equalTo(user.name).on('child_added', snapshot => {
+            if(!snapshot){
+                console.log('erro')
+            }
+        })
+    }
+    
     render() {
         return (
             <Container style={styles.container}>
@@ -31,6 +42,7 @@ class EntrarScreen extends Component {
                     <Body>
                         <Title>Entrar Com Email</Title>
                     </Body>
+                    <Right />
                 </Header>
                 <Form style={styles.formContainer}>
                     <Item floatingLabel>
@@ -39,7 +51,7 @@ class EntrarScreen extends Component {
                             style={styles.input}
                             autoCorrect={false}
                             autoCapitalize='none'
-                            onChangeText={(email) => this.setState({ email })}
+                            onChangeText={(name) => this.setState({ user: {...this.state.user, name: name} })}
                         />
                     </Item>
                     <Item floatingLabel>
@@ -49,7 +61,7 @@ class EntrarScreen extends Component {
                             secureTextEntry={true}
                             autoCorrect={false}
                             autoCapitalize='none'
-                            onChangeText={(senha) => this.setState({ senha })}
+                            onChangeText={(password) => this.setState({ user: {...this.state.user, password: password} })}
                         />
                     </Item>
                     <Button style={styles.button} full rounded onPress={() => this.props.navigation.navigate('Home')}>
