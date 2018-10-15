@@ -24,30 +24,6 @@ class LoginScreen extends Component {
         }
     }
 
-    signUpUser = (email, senha) => {
-        try {
-           if(this.state.senha.length < 6) {
-               alert('Por favor, digite pelo menos 6 caracteres para senha')
-               return;
-           } 
-           firebase.auth().createUserWithEmailAndPassword(email, senha)
-           alert('Cadastro realizado com sucesso!')
-        } catch (error) {
-            console.log(error.toString())
-        }
-    }
-
-    signInUser = (email, senha) => {
-        try {
-            firebase.auth().signInWithEmailAndPassword(email, senha)
-                .then(function (user) {
-                })
-                .then(this.props.navigation.navigate('Home'))
-        } catch (error) {
-            console.log(error.toString())
-        }
-    }
-
     async componentWillMount() {
         await Font.loadAsync({
             Roboto: require("native-base/Fonts/Roboto.ttf"),
@@ -75,7 +51,6 @@ class LoginScreen extends Component {
                             source={logo}
                         />
                     </View>
-
                     <View style={styles.formContainer}>
                         <Button style={styles.button} full rounded onPress={() => this.props.navigation.navigate('Entrar')}>
                             <Icon name="mail"></Icon>
@@ -92,7 +67,7 @@ class LoginScreen extends Component {
                             <Text style={{ color: 'white', fontWeight: 'bold', flex: 1}}>CONTINUAR COM GOOGLE</Text>
                             <Icon name="ios-arrow-forward"></Icon>
                         </Button>
-                        <Button style={{ backgroundColor: '#1565C0', marginTop: 15,}} full rounded onPress={() => this.props.navigation.navigate('CadastroCli') /*this.signUpUser(this.state.email, this.state.senha)}*/}>
+                        <Button style={{ backgroundColor: '#1565C0', marginTop: 15,}} full rounded onPress={() => this.props.navigation.navigate('CadastroCli')}>
                             <Icon name="person"></Icon>
                             <Text style={{ color: 'white', fontWeight: 'bold', flex: 1 }}>CADASTRAR</Text>
                             <Icon name="ios-arrow-forward"></Icon>

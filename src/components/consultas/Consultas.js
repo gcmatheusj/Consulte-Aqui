@@ -52,15 +52,10 @@ class ConsultaScreen extends Component {
                         </Button>
                     </Right>
                 </Header>
-                <Content contentContainerStyle={{
-                    padding: 5
-                    //: 1,
-                    //alignItems: 'center',
-                    //justifyContent: 'center'
-                }}>
+                <Content contentContainerStyle={{ padding: 5 }}>
                     <Title style={{ padding: 5, alignContent: 'center', justifyContent: 'center', color: 'gray', alignContent: 'center', justifyContent: 'center', fontSize: 18 }}>Especialidades Médicas</Title>
                     <Card>
-                        <CardItem>
+                        <CardItem button onPress={() => this.props.navigation.navigate('CadastroCli')}>
                             <Body>
                                 <Title style={styles.especialidadeMed}>
                                     Cardiologista
