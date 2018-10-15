@@ -1,5 +1,15 @@
 import firebase from 'firebase/app'
 import 'firebase/database'
+import { YellowBox } from 'react-native';
+import _ from 'lodash';
+
+YellowBox.ignoreWarnings(['Setting a timer']);
+const _console = _.clone(console);
+console.warn = message => {
+  if (message.indexOf('Setting a timer') <= -1) {
+    _console.warn(message);
+  }
+}
 
 const firebaseConfig = {
     apiKey: "AIzaSyC7K4Thh7Cv-wx4--kU4J1z8yxW5EH4Eyc",
@@ -12,3 +22,6 @@ const firebaseConfig = {
   firebase.initializeApp(firebaseConfig)
 
   export const database = firebase.database()
+
+  
+
