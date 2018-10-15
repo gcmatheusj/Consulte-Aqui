@@ -63,11 +63,6 @@ export default createStackNavigator({
 })
 
 const styles = StyleSheet.create({
-  container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center'
-  },
   statusBar: {
       backgroundColor: "#00CAC9",
       height: Constants.statusBarHeight,

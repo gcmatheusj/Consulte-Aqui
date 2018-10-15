@@ -6,7 +6,7 @@ import ConsultaScreen from '../consultas/Consultas'
 import ExameScreen from '../exames/Exames'
 import logo from '../../assets/consulte-aqui-menu.png'
 
-class DrawerMenuHomeScreen extends Component {
+class DrawerMenuScreen extends Component {
     static navigationOptions = {
         header: null,
     }
@@ -19,14 +19,14 @@ class DrawerMenuHomeScreen extends Component {
 }
 
 export default createStackNavigator({
-    Home: {
-        screen: DrawerMenuHomeScreen,
+    MenuDrawer: {
+        screen: DrawerMenuScreen,
     },
 })
 
 const CustomDrawerComponent = props => (
     <SafeAreaView style={{ flex: 1, marginTop: 25 }}>
-        <View style={{ height: 100, backgroundColor: 'white', alignItems: 'center', justifyContent: 'center' }}>
+        <View style={Styles.viewDrawer}>
             <Image source={logo} style={{ height: 85, width: 100, }} />
         </View>
         <ScrollView>
@@ -39,7 +39,8 @@ const CustomDrawerComponent = props => (
 const DrawerMenu = createDrawerNavigator({
     Consultas: ConsultaScreen,
     Exames: ExameScreen
-}, {
+}, 
+    {
         contentComponent: CustomDrawerComponent
     }
 )
@@ -47,5 +48,11 @@ const DrawerMenu = createDrawerNavigator({
 const Styles = StyleSheet.create({
     container: {
         flex: 1,
+    },
+    viewDrawer: {
+        height: 100, 
+        backgroundColor: 'white', 
+        alignItems: 'center', 
+        justifyContent: 'center'
     },
 })
