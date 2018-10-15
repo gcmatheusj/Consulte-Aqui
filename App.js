@@ -6,6 +6,7 @@ import LoginScreen from './src/components/login/Login'
 import DrawerMenuHomeScreen from './src/components/home/DrawerMenuHome'
 import EntrarScreen from './src/components/entrar/Entrar'
 import CadastroClienteScreen from './src/components/cadastro/CadastroPaciente'
+import EletrocardiogramaScreen from './src/components/exames/Eletrocardiograma'
 
 export default class App extends Component {
 
@@ -20,7 +21,9 @@ const AppStackNavigator = createStackNavigator({
   Login: LoginScreen,
   Home: DrawerMenuHomeScreen,
   Entrar: EntrarScreen,
-  CadastroCli: CadastroClienteScreen
+  CadastroCli: CadastroClienteScreen,
+  Eletrocardiograma: EletrocardiogramaScreen
+  
 },
 {
   initialRouteName: 'Login',

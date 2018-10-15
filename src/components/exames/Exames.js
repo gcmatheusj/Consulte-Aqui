@@ -3,7 +3,8 @@ import { StyleSheet, View, Text } from 'react-native'
 import { createStackNavigator } from 'react-navigation'
 import { Font, AppLoading, Constants } from "expo"
 import { Icon, Button, Left, Header, Content, Container, Body, Title, Right, Card, CardItem } from 'native-base'
-import { SearchBar } from 'react-native-elements'
+import { SearchBar } from 'react-native-elements';
+import EletrocardiogramaScreen from './Eletrocardiograma'
 
 class ExameScreen extends Component {
     constructor(props) {
@@ -48,13 +49,10 @@ class ExameScreen extends Component {
                 </Header>
                 <Content contentContainerStyle={{
                     padding: 5
-                    //flex: 1,
-                    //alignItems: 'center',
-                    //justifyContent: 'center'
                 }}>
-                    <Title style={{ padding: 5, alignContent: 'center', justifyContent: 'center', color: 'gray', alignContent: 'center', justifyContent: 'center', fontSize: 18 }}>Lista de Especialidades</Title>
+                    <Title style={styles.listaEspecialidades}>Lista de Especialidades</Title>
                     <Card>
-                        <CardItem>
+                        <CardItem button onPress={() => this.props.naviagation.navigate('Eletrocardiograma')}>
                             <Body>
                                 <Title style={styles.exameEspecialidade}>
                                     Eletrocardiograma
@@ -161,5 +159,14 @@ const styles = StyleSheet.create({
     exameEspecialidade: {
         color: 'gray',
         fontSize: 14
+    },
+    listaEspecialidades: {
+        padding: 5, 
+        alignContent: 'center', 
+        justifyContent: 'center',
+        color: 'gray', 
+        alignContent: 'center', 
+        justifyContent: 'center', 
+        fontSize: 18 
     }
 })
