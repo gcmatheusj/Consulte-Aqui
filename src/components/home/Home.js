@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Constants } from "expo"
 import { StyleSheet, View, Image} from 'react-native'
 import { createStackNavigator } from 'react-navigation';
-import { Container, Header, Content, Button, Text, Title, Icon } from 'native-base';
+import { Container, Header, Content, Button, Text, Title } from 'native-base';
 
 import calendar from '../../assets/calendar.png'
 

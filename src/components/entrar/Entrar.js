@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, TextInput, Image, ScrollView, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import { createStackNavigator } from 'react-navigation'
-import { Font, AppLoading, Constants } from "expo"
-import { Icon, Form, Item, Label, Button, Input, Left, Header, Content, Container, Right, Body, Title, Card, CardItem } from 'native-base'
+import { Constants } from "expo"
+import { Icon, Form, Item, Label, Button, Input, Left, Header, Container, Right, Body, Title } from 'native-base'
 import { database } from '../../../firebase'
 
 class EntrarScreen extends Component {
@@ -64,11 +64,7 @@ class EntrarScreen extends Component {
                             onChangeText={(password) => this.setState({ user: {...this.state.user, password: password} })}
                         />
                     </Item>
-<<<<<<< HEAD
                     <Button style={styles.button} full rounded onPress={() => this.props.navigation.navigate('Home')}>
-=======
-                    <Button style={styles.button} full rounded onPress={() => this.props.navigation.navigate('Cardiologista')}>
->>>>>>> 2826ea10b7c3bfb16908b9d5937e9a652179d895
                         <Text style={{ color: 'white', fontWeight: 'bold', }}>ENTRAR</Text>
                     </Button>
                     <TouchableOpacity style={styles.buttones}>

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, View, Text} from 'react-native'
 import { createStackNavigator } from 'react-navigation'
 import { Constants } from "expo"
-import { Icon, Form, Item, Label, Button, Input, Left, Header, Content, Container, Right, Body, Title, Card, CardItem } from 'native-base'
+import { Icon, Button, Left, Header, Content, Container, Right, Body, Title, Card, CardItem } from 'native-base'
 
 class CardiologistaScreen extends Component {
     static navigationOptions = {
@@ -31,11 +31,11 @@ class CardiologistaScreen extends Component {
                     </Right>
                 </Header>
                 <Content contentContainerStyle={{ padding: 5 }}>
-                    <Title style={{ padding: 5, alignContent: 'center', justifyContent: 'center', color: 'gray', fontSize: 18 }}>CARDIOLOGISTAS</Title>
+                    <Title style={styles.especialidade}>CARDIOLOGISTAS</Title>
                     <Card>
                         <CardItem button onPress={() => this.props.navigation.navigate('Medico')}>
                             <Body>
-                                <Title style={styles.especialidadeMed}>
+                                <Title style={styles.Medico}>
                                     JOSÉ AUGUSTO VIEIRA
                                 </Title>
                                 <Text>CRM: 0000-0</Text>
@@ -67,9 +67,16 @@ const styles = StyleSheet.create({
     header: {
         backgroundColor: '#00CAC9',
     },
-    especialidadeMed: {
+    Medico: {
         color: 'gray',
         fontSize: 15,
         fontWeight: 'bold'
+    },
+    especialidade: {
+        padding: 5, 
+        alignContent: 'center', 
+        justifyContent: 'center', 
+        color: 'gray', 
+        fontSize: 18 
     }
 })
