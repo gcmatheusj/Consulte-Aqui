@@ -5,9 +5,15 @@ import { createStackNavigator } from 'react-navigation';
 import { Container, Header, Content, Button, Text, Title } from 'native-base';
 
 import calendar from '../../assets/calendar.png'
+import medic from '../../assets/medica.jpg'
 
 class HomeScreen extends Component {
-  
+  constructor(props){
+    super(props)
+    this.state = {
+        user: {}
+    }
+}
   static navigationOptions = {
     header: null
 }
@@ -20,23 +26,30 @@ class HomeScreen extends Component {
         </View>
         <Header style = {styles.header} />
         <Content>
+        <View>
+          <Image source={medic} style={{ height: 200, width: 400, marginBottom: 40 }} />
+        </View>
         <Title style={styles.titleHome}>Agendamento de Consultas e Exames,</Title>
         <Title style={styles.titleHome}>com praticidade e segurança</Title>
-          <View style={{flexDirection: 'row'}}>
-            <Button bordered ><Text> Consultas </Text></Button>
-            <Button bordered ><Text> Exames </Text></Button>
+          <View style={{flexDirection: 'row', justifyContent:'center'}}>
+            <Button 
+              bordered 
+              style={styles.button} onPress={() => this.props.naviagation.navigate('Consultas')}>
+                <Text style={{color:'#00CAC9'}}> Consultas </Text>
+            </Button>
+            <Button 
+              bordered 
+              style={styles.button} onPress={() => this.props.naviagation.navigate('Exames')}>
+                <Text style={{color:'#00CAC9'}}> Exames </Text>
+            </Button>
           </View>
         </Content>
-        <Container>
-          <View style={styles.areaPaciente}>
+        {/*<View style={styles.areaPaciente}>
             <Title style={{color: 'white', textAlign: 'left', marginLeft: 10}}>Área do Paciente</Title>
-          </View>
-        </Container>
-        <Container>
+          </View>}
           <View style={styles.viewCalendar}>
-            <Image source={calendar} style={{ height: 85, width: 100 }} />
-          </View>
-        </Container>
+            <Image source={calendar} style={{ height: 85, width: 100, marginBottom: 100, marginTop: 80}} />
+          </View>*/}
       </Container>
     );
   }
@@ -59,9 +72,6 @@ export default createStackNavigator({
     titulo: {
       color: 'black'
     },
-    btn: {
-      color: '#00CAC9'
-    },
     titleHome: {
       padding: 5, 
       alignContent: 'center', 
@@ -77,5 +87,13 @@ export default createStackNavigator({
     },
     areaPaciente: {
       backgroundColor: '#00CAC9'
-    }
+    },
+    button: {
+      alignItems:'center',
+      justifyContent: 'center',
+      borderColor: '#00CAC9',
+      marginRight: 10,
+      width: 150,
+      marginTop: 40
+    },
   })
