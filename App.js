@@ -13,6 +13,7 @@ import AgendaExameScreen from './src/components/exames/agendarExame'
 import DadosConsultaScreen from './src/components/cardiologista/dadosConsulta'
 import DadosExameScreen from './src/components/exames/dadosExame'
 import confirmaConsultaScreen from './src/components/cardiologista/confirmacaoConsulta'
+import confirmaExameScreen from './src/components/exames/confirmacaoExame'
 
 export default class App extends Component {
 
@@ -36,6 +37,7 @@ const AppStackNavigator = createStackNavigator({
   DadosConsulta: DadosConsultaScreen,
   DadosExame: DadosExameScreen,
   ConfirmaConsulta: confirmaConsultaScreen,
+  ConfirmacaoExame: confirmaExameScreen,
 },
 {
   initialRouteName: 'Login',
