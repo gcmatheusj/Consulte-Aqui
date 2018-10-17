@@ -29,7 +29,7 @@ class  EletrocardiogramaScreen extends Component {
             </Button>
             </Left>
             <Body>
-                <Title>Consultas</Title>
+                <Title>Eletrocardiograma</Title>
             </Body>
 
             <Right>
@@ -39,7 +39,7 @@ class  EletrocardiogramaScreen extends Component {
             </Right>
         </Header>
         <Content padder>
-        <Title style = {styles.titleExame}>Eletrocardiograma</Title>
+        <Title style = {styles.titleExame}>Clínicas</Title>
           <Card>
             <CardItem header button onPress={() => this.props.naviagation.navigate('')}>
               <Body>                
