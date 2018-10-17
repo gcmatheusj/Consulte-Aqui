@@ -17,23 +17,9 @@ class AgendaExameScreen extends Component {
         console.log(this.state)
         return (
            <Container>
-                <View>
-                    <View style={styles.statusBar} />
-                </View>
-                <Header style={styles.header} >
-                    <Left>
-                        <Button transparent onPress={() => this.props.navigation.openDrawer()}>
-                            <Icon name='menu'></Icon>
-                        </Button>
-                    </Left>
-                    <Body style={{height: 50}}>
-                        <Title>Eletrocardiograma</Title>
-                    </Body>
-                    <Right />
-                </Header>
                 <Content>
                     <View style={styles.agendaExame}>
-                        <Icon name='pin' style={{ color: 'gray', marginLeft: 10}}></Icon>
+                        <Icon name='pin' style={{ color: 'white', marginLeft: 10}}></Icon>
                         <View style={styles.infoClinica}>
                             <Title style={{ color: 'white', fontSize: 16, fontWeight: 'bold' }}>Centro Médico São Francisco</Title>
                             <Text style={styles.contato}>Rua São Francisco, 444, Centro</Text>

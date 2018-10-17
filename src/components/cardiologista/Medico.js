@@ -10,22 +10,18 @@ class MedicoScreen extends Component {
     state = {
         paciente: '',
         email: '',
-        horario: '',
+        horarioConsulta: '',
         dadosClinica: {
-            nome: 'Centro Médico São Francisco',
+            nomeClinica: 'Centro Médico São Francisco',
             endereco: 'Rua São Francisco, 444, Centro, Penedo-Al',
             telefone: '(82) 3551-444'
-        }
+        },
+        valor: 'R$ 150,00',
+        medico: 'José Augusto Vieira'
     }
 
     static navigationOptions = {
         header: null,
-    }
-
-    marcarConsulta = (consulta) => {
-        console.log(consulta)
-        const firebaseRef = database.ref('consulta/')
-        firebaseRef.push(this.state)
     }
 
     render(){
@@ -47,12 +43,12 @@ class MedicoScreen extends Component {
                         <Text style={styles.dia}>Segunda-Feira</Text>
                     </View>
                     <View style={styles.horarios}>
-                        <Button style={styles.btn} onPress={()=> { this.setState({ horario: '09:00', paciente: userLoggedIn.displayName, email: userLoggedIn.email })  }}><Text style={styles.btnText}> 09:00 </Text></Button>
-                        <Button style={styles.btn} onPress={()=> { this.setState({ horarioConsulta: '10:00' }) }}><Text style={styles.btnText}> 10:00 </Text></Button>
-                        <Button style={styles.btn} onPress={()=> { this.setState({ horarioConsulta: '11:00' }) }}><Text style={styles.btnText}> 11:00 </Text></Button>
-                        <Button style={styles.btn} onPress={()=> { this.setState({ horarioConsulta: '12:00' }) }}><Text style={styles.btnText}> 12:00 </Text></Button>
-                        <Button style={styles.btn} onPress={()=> { this.setState({ horarioConsulta: '13:00' }) }}><Text style={styles.btnText}> 13:00 </Text></Button>
-                        <Button style={styles.btn} onPress={()=> { this.setState({ horarioConsulta: '14:00' }) }}><Text style={styles.btnText}> 14:00 </Text></Button>
+                        <Button style={styles.btn} onPress={()=> { this.setState({ horarioConsulta: '09:00', paciente: userLoggedIn.displayName, email: userLoggedIn.email })  }}><Text style={styles.btnText}> 09:00 </Text></Button>
+                        <Button style={styles.btn} onPress={()=> { this.setState({ horarioConsulta: '10:00', paciente: userLoggedIn.displayName, email: userLoggedIn.email }) }}><Text style={styles.btnText}> 10:00 </Text></Button>
+                        <Button style={styles.btn} onPress={()=> { this.setState({ horarioConsulta: '11:00', paciente: userLoggedIn.displayName, email: userLoggedIn.email }) }}><Text style={styles.btnText}> 11:00 </Text></Button>
+                        <Button style={styles.btn} onPress={()=> { this.setState({ horarioConsulta: '12:00', paciente: userLoggedIn.displayName, email: userLoggedIn.email }) }}><Text style={styles.btnText}> 12:00 </Text></Button>
+                        <Button style={styles.btn} onPress={()=> { this.setState({ horarioConsulta: '13:00', paciente: userLoggedIn.displayName, email: userLoggedIn.email }) }}><Text style={styles.btnText}> 13:00 </Text></Button>
+                        <Button style={styles.btn} onPress={()=> { this.setState({ horarioConsulta: '14:00', paciente: userLoggedIn.displayName, email: userLoggedIn.email }) }}><Text style={styles.btnText}> 14:00 </Text></Button>
                     </View>
                     <View style={styles.localidade}>
                         <Icon name='pin' style={{ color: 'gray', marginRight: 10}}></Icon>
@@ -62,7 +58,7 @@ class MedicoScreen extends Component {
                             <Text style={styles.localidadeText}>(82) 3551-444</Text>
                         </View>
                     </View>
-                    <Button style={styles.btnContinuar} full onPress={()=> this.marcarConsulta(this.state)}><Text style={{ color: 'white'}}>CONTINUAR</Text></Button>
+                    <Button style={styles.btnContinuar} full onPress={()=> this.props.navigation.navigate('ConfirmarConsulta', { dadosConsulta: this.state})}><Text style={{ color: 'white'}}>CONTINUAR</Text></Button>
                 </Content>
            </Container>
         )

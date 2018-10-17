@@ -78,7 +78,7 @@ class EntrarScreen extends Component {
                             onChangeText={(password) => this.setState({ user: {...this.state.user, password: password} })}
                         />
                     </Item>
-                    <Button style={styles.button} full rounded onPress={() => this.signIn(this.state.user)}>
+                    <Button style={styles.button} full onPress={() => this.signIn(this.state.user)}>
                         <Text style={{ color: 'white', fontWeight: 'bold', }}>ENTRAR</Text>
                     </Button>
                     <TouchableOpacity style={styles.buttones}>

@@ -5,49 +5,26 @@ import { createStackNavigator } from 'react-navigation'
 import { Container, Header, Content, Card, CardItem, Text, Body, Title, Left, Right, Icon, Button } from "native-base";
 
 class  EletrocardiogramaScreen extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            user: {}
-        }
-    }
-
-    static navigationOptions = {
-      header: null
+  constructor(props){
+      super(props)
   }
 
+  static navigationOptions = {
+      header: null,
+  }
   render() {
     return (
       <Container>
-        <View>
-          <View style={styles.statusBar} />
-        </View>
-        <Header style = {styles.header}>
-            <Left>
-            <Button transparent onPress={() => this.props.navigation.openDrawer()}>
-                <Icon name='menu'></Icon>
-            </Button>
-            </Left>
-            <Body>
-                <Title>Eletrocardiograma</Title>
-            </Body>
-
-            <Right>
-                <Button transparent>
-                    <Icon name='md-search'></Icon>
-                </Button>
-            </Right>
-        </Header>
         <Content padder>
-        <Title style = {styles.titleExame}>Clínicas</Title>
+        <Title style = {styles.titleExame}>Selecione uma clínica abaixo.</Title>
           <Card>
-            <CardItem header button onPress={() => this.props.naviagation.navigate('')}>
+            <CardItem header button onPress={() => this.props.navigation.navigate('AgendaExame')}>
               <Body>                
                 <Title style = {styles.titulo}>Centro Médico São Francisco</Title>
-                <Text>Rua São Francisco, 444, Centro</Text>
-                <Text>Penedo-AL</Text>
-                <Text>Valor do exame: R$ 250,00</Text>
-                <Text>82 3551-4444</Text>
+                <Text style={styles.bodyContent}>Rua São Francisco, 444, Centro</Text>
+                <Text style={styles.bodyContent}>Penedo-AL</Text>
+                <Text style={styles.bodyContent}>Valor do exame: R$ 250,00</Text>
+                <Text style={styles.bodyContent}>82 3551-4444</Text>
               </Body>
             </CardItem>
           </Card>
@@ -71,7 +48,9 @@ const styles = StyleSheet.create({
       backgroundColor: '#00CAC9'
   },
   titulo: {
-    color: 'black'
+    color: 'gray',
+    fontSize: 15,
+    fontWeight: 'bold'
   },
   titleExame: {
     padding: 5, 
@@ -79,5 +58,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center', 
     color: 'gray', 
     fontSize: 18
+  },
+  bodyContent: {
+    color: 'gray'
   }
 })

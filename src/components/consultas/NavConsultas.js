@@ -4,11 +4,13 @@ import { createStackNavigator } from 'react-navigation'
 import ConsultaScreen from './Consultas'
 import CardiologistaScreen from '../cardiologista/Cardiologista'
 import MedicoScreen from '../cardiologista/Medico'
+import ConfirmarConsultaScreen from '../cardiologista/dadosConsulta'
 
 const NavConsultaList = createStackNavigator({
     Consultas: ConsultaScreen,
     Cardiologista: CardiologistaScreen,
-    Medico: MedicoScreen
+    Medico: MedicoScreen,
+    ConfirmarConsulta: ConfirmarConsultaScreen
 },
 {
     navigationOptions: {

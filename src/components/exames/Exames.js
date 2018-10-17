@@ -23,6 +23,10 @@ class ExameScreen extends Component {
         })
     }
 
+    static navigationOptions = {
+        header: null,
+    }
+
     render() {
         if (this.state.loading) {
             return <AppLoading />
@@ -34,25 +38,21 @@ class ExameScreen extends Component {
                 </View>
                 <Header style={styles.header}>
                     <Left>
-                        <Button transparent onPress={() => this.props.navigation.openDrawer()}>
-                            <Icon name='menu'></Icon>
+                        <Button transparent onPress={() => this.props.navigation.navigate('Home')}>
+                            <Icon name='arrow-back'></Icon>
                         </Button>
                     </Left>
                     <Body>
                         <Title>Exames</Title>
                     </Body>
-                    <Right>
-                        <Button transparent>
-                            <Icon name='md-search'></Icon>
-                        </Button>
-                    </Right>
+                    <Right />
                 </Header>
                 <Content contentContainerStyle={{
                     padding: 5
                 }}>
                     <Title style={styles.listaEspecialidades}>Lista de Especialidades</Title>
                     <Card>
-                        <CardItem button onPress={() => this.props.naviagation.navigate('Eletrocardiograma')}>
+                        <CardItem button onPress={() => this.props.navigation.navigate('Eletrocardiograma')}>
                             <Body>
                                 <Title style={styles.exameEspecialidade}>
                                     Eletrocardiograma

@@ -38,14 +38,13 @@ class ConsultaScreen extends Component {
                 </View>
                 <Header style={styles.header} >
                     <Left>
-                        <Button transparent onPress={() => this.props.navigation.openDrawer()}>
-                            <Icon name='menu'></Icon>
+                        <Button transparent onPress={() => this.props.navigation.navigate('Home')}>
+                            <Icon name='arrow-back'></Icon>
                         </Button>
                     </Left>
                     <Body>
                         <Title>Consultas</Title>
                     </Body>
-
                     <Right />
                 </Header>
                 <Content contentContainerStyle={{ padding: 5 }}>
