@@ -1,5 +1,6 @@
 import firebase from 'firebase/app'
 import 'firebase/database'
+import 'firebase/auth'
 import { YellowBox } from 'react-native';
 import _ from 'lodash';
 

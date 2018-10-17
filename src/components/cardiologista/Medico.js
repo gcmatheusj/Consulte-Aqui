@@ -3,39 +3,41 @@ import { StyleSheet, View, Text} from 'react-native'
 import { createStackNavigator } from 'react-navigation'
 import { Constants } from "expo"
 import { Icon, Form, Item, Label, Button, Input, Left, Header, Content, Container, Right, Body, Title, Card, CardItem } from 'native-base'
+import { database, } from '../../../firebase'
+import firebase from 'firebase'
 
 class MedicoScreen extends Component {
     state = {
-        horario: ''
+        paciente: '',
+        email: '',
+        horario: '',
+        dadosClinica: {
+            nome: 'Centro Médico São Francisco',
+            endereco: 'Rua São Francisco, 444, Centro, Penedo-Al',
+            telefone: '(82) 3551-444'
+        }
     }
 
     static navigationOptions = {
         header: null,
     }
 
+    marcarConsulta = (consulta) => {
+        console.log(consulta)
+        const firebaseRef = database.ref('consulta/')
+        firebaseRef.push(this.state)
+    }
+
     render(){
+        const userLoggedIn = firebase.auth().currentUser
         console.log(this.state)
         return (
            <Container>
-                <View>
-                    <View style={styles.statusBar} />
-                </View>
-                <Header style={styles.header} >
-                    <Left>
-                        <Button transparent onPress={() => this.props.navigation.openDrawer()}>
-                            <Icon name='menu'></Icon>
-                        </Button>
-                    </Left>
-                    <Body>
-                        <Title>Consultas</Title>
-                    </Body>
-                    <Right />
-                </Header>
                 <Content>
                     <View style={styles.medico}>
                         <View style={styles.medicoFoto}></View>
                         <View style={styles.medicoInfo}>
-                            <Title style={{ color: 'white', fontSize: 16, fontWeight: 'bold' }}>JOSÉ AUGUSTO VIEIRA</Title>
+                            <Title style={{ color: 'white', fontSize: 16 }}>JOSÉ AUGUSTO VIEIRA</Title>
                             <Text style={styles.crm}>CRM: 0000-0</Text>
                         </View>
                     </View>
@@ -45,21 +47,22 @@ class MedicoScreen extends Component {
                         <Text style={styles.dia}>Segunda-Feira</Text>
                     </View>
                     <View style={styles.horarios}>
-                        <Button style={styles.btn} onPress={()=> { this.setState({ horario: '09:00' }) }}><Text style={styles.btnText}> 09:00 </Text></Button>
-                        <Button style={styles.btn} onPress={()=> { this.setState({ horario: '10:00' }) }}><Text style={styles.btnText}> 10:00 </Text></Button>
-                        <Button style={styles.btn} onPress={()=> { this.setState({ horario: '11:00' }) }}><Text style={styles.btnText}> 11:00 </Text></Button>
-                        <Button style={styles.btn} onPress={()=> { this.setState({ horario: '12:00' }) }}><Text style={styles.btnText}> 12:00 </Text></Button>
-                        <Button style={styles.btn} onPress={()=> { this.setState({ horario: '13:00' }) }}><Text style={styles.btnText}> 13:00 </Text></Button>
-                        <Button style={styles.btn} onPress={()=> { this.setState({ horario: '14:00' }) }}><Text style={styles.btnText}> 14:00 </Text></Button>
+                        <Button style={styles.btn} onPress={()=> { this.setState({ horario: '09:00', paciente: userLoggedIn.displayName, email: userLoggedIn.email })  }}><Text style={styles.btnText}> 09:00 </Text></Button>
+                        <Button style={styles.btn} onPress={()=> { this.setState({ horarioConsulta: '10:00' }) }}><Text style={styles.btnText}> 10:00 </Text></Button>
+                        <Button style={styles.btn} onPress={()=> { this.setState({ horarioConsulta: '11:00' }) }}><Text style={styles.btnText}> 11:00 </Text></Button>
+                        <Button style={styles.btn} onPress={()=> { this.setState({ horarioConsulta: '12:00' }) }}><Text style={styles.btnText}> 12:00 </Text></Button>
+                        <Button style={styles.btn} onPress={()=> { this.setState({ horarioConsulta: '13:00' }) }}><Text style={styles.btnText}> 13:00 </Text></Button>
+                        <Button style={styles.btn} onPress={()=> { this.setState({ horarioConsulta: '14:00' }) }}><Text style={styles.btnText}> 14:00 </Text></Button>
                     </View>
                     <View style={styles.localidade}>
+                        <Icon name='pin' style={{ color: 'gray', marginRight: 10}}></Icon>
                         <View style={styles.localidadeContent}>
                             <Text style={styles.localidadeText}>Centro Médico São Francisco</Text>
                             <Text style={styles.localidadeText}>Rua São Francisco, 444, Centro, Penedo-Al</Text>
                             <Text style={styles.localidadeText}>(82) 3551-444</Text>
                         </View>
-                        <Icon name='pin' style={{ color: 'gray', marginLeft: 10}}></Icon>
                     </View>
+                    <Button style={styles.btnContinuar} full onPress={()=> this.marcarConsulta(this.state)}><Text style={{ color: 'white'}}>CONTINUAR</Text></Button>
                 </Content>
            </Container>
         )
@@ -92,7 +95,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: '#00CAC9',
-        padding: 10
+        padding: 5
     },
     medicoFoto: {
         marginLeft: 7,
@@ -145,7 +148,10 @@ const styles = StyleSheet.create({
     localidadeText: {
         color: 'gray'
     },
-    localidadeContent: {
-        
+    btnContinuar: {
+        backgroundColor: '#2196F3',
+        marginLeft: 16, 
+        marginRight: 16, 
+        marginTop: 50
     }
 })
