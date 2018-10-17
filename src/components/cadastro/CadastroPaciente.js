@@ -3,7 +3,8 @@ import { StyleSheet, View, Text } from 'react-native'
 import { createStackNavigator } from 'react-navigation'
 import { Font, AppLoading, Constants } from "expo"
 import { Icon, Form, Item, Label, Button, Input, Left, Header, Content, Container, Right, Body, Title, Card, CardItem } from 'native-base'
-import { database } from '../../../firebase'
+import { database, } from '../../../firebase'
+import firebase from 'firebase'
 
 class CadastroClienteScreen extends Component {
     constructor(props){
@@ -17,13 +18,42 @@ class CadastroClienteScreen extends Component {
         header: null
     }
     
-    signUpUser = user => {
-        if(user){
-            alert('Preencha todos os campos!')
-        }
+    signUpUser = userState => {
         const firebaseRef = database.ref('user/')
-        firebaseRef.push(user) 
-    }
+        firebaseRef.push(userState)
+        firebase.auth().createUserWithEmailAndPassword(userState.email, userState.password).catch(error => {
+            const errorCode = error.code
+            const errorMessage = error.message
+
+            if (errorCode === 'auth/email-already-in-use'){
+                alert('E-mail já cadastrado.');
+            }
+        })
+        firebase.auth().onAuthStateChanged(function(user) {
+
+            if (user) {
+
+               // Updates the user attributes:
+
+              user.updateProfile({ // <-- Update Method here
+
+                displayName: userState.name,
+
+              }).then(function() {
+
+                // Profile updated successfully!
+                //  "NEW USER NAME"
+
+                var displayName = user.displayName;
+
+              }, function(error) {
+                // An error happened.
+              })     
+
+            }
+            console.log(user)
+    }); 
+}
 
     render() {
         return (
@@ -34,7 +64,7 @@ class CadastroClienteScreen extends Component {
                 <Header style={styles.header} >
                     <Left>
                         <Button transparent onPress={() => this.props.navigation.navigate('Login')}>
-                            <Icon name='ios-arrow-back-outline'></Icon>
+                            <Icon name='arrow-back'></Icon>
                         </Button>
                     </Left>
                     <Body>
@@ -53,13 +83,13 @@ class CadastroClienteScreen extends Component {
                         />
                     </Item>
                     <Item floatingLabel>
-                        <Label style={{ color: 'gray', fontWeight: 'bold' }}>CPF</Label>
+                        <Label style={{ color: 'gray', fontWeight: 'bold' }}>E-mail</Label>
                         <Input
                             style={styles.input}
                             secureTextEntry={false}
                             autoCorrect={false}
                             autoCapitalize='none'
-                            onChangeText={(cpf) => this.setState({ user: {...this.state.user, cpf: cpf} })}
+                            onChangeText={(email) => this.setState({ user: {...this.state.user, email: email} })}
                         />
                     </Item>
                     <Item floatingLabel>

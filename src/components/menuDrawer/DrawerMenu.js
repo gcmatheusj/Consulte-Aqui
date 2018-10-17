@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import { StyleSheet, View, Image, SafeAreaView, ScrollView } from 'react-native'
 import { createStackNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation'
 
-import ConsultaScreen from '../consultas/Consultas'
-import ExameScreen from '../exames/Exames'
+import NavExameScreenList from '../exames/NavExames'
 import logo from '../../assets/consulte-aqui-menu.png'
+import NavConsultaScreenList from '../consultas/NavConsultas'
+import HomeScreen from '../home/Home'
 
 class DrawerMenuScreen extends Component {
     static navigationOptions = {
@@ -37,8 +38,9 @@ const CustomDrawerComponent = props => (
 
 
 const DrawerMenu = createDrawerNavigator({
-    Consultas: ConsultaScreen,
-    Exames: ExameScreen
+    Home: HomeScreen,
+    Consultas: NavConsultaScreenList,
+    Exames: NavExameScreenList,
 }, 
     {
         contentComponent: CustomDrawerComponent

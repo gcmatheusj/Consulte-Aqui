@@ -4,6 +4,7 @@ import { createStackNavigator } from 'react-navigation'
 import { Constants } from "expo"
 import { Icon, Form, Item, Label, Button, Input, Left, Header, Container, Right, Body, Title } from 'native-base'
 import { database } from '../../../firebase'
+import firebase from 'firebase'
 
 class EntrarScreen extends Component {
     constructor(props){
@@ -17,14 +18,27 @@ class EntrarScreen extends Component {
         header: null
     }
 
-    signIn = user => {
-        console.log('teste')
-        const firebaseRef = database.ref('user')
-        firebaseRef.orderByChild('name').equalTo(user.name).on('child_added', snapshot => {
-            if(!snapshot){
-                console.log('erro')
-            }
+    signIn = userState => {
+        
+        firebase.auth().signInWithEmailAndPassword(userState.email, userState.password)
+        .then(()=>{
+            this.props.navigation.navigate('MenuDrawer')
         })
+        .catch(function(error) {
+            const errorCode = error.code
+            const errorMessage = error.message
+
+            if(errorCode === 'auth/user-not-found' || errorCode === 'auth/wrong-password'){
+                alert('Usuário e/ou senha não conferem.')
+            } 
+        })
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                console.log(user)
+            } else {
+                
+            }
+        })   
     }
     
     render() {
@@ -36,11 +50,11 @@ class EntrarScreen extends Component {
                 <Header style={styles.header} >
                     <Left>
                         <Button transparent onPress={() => this.props.navigation.navigate('Login')}>
-                            <Icon name='ios-arrow-back-outline'></Icon>
+                            <Icon name='arrow-back'></Icon>
                         </Button>
                     </Left>
                     <Body>
-                        <Title>Entrar Com Email</Title>
+                        <Title>Entrar</Title>
                     </Body>
                     <Right />
                 </Header>
@@ -51,7 +65,7 @@ class EntrarScreen extends Component {
                             style={styles.input}
                             autoCorrect={false}
                             autoCapitalize='none'
-                            onChangeText={(name) => this.setState({ user: {...this.state.user, name: name} })}
+                            onChangeText={(email) => this.setState({ user: {...this.state.user, email: email} })}
                         />
                     </Item>
                     <Item floatingLabel>
@@ -64,7 +78,7 @@ class EntrarScreen extends Component {
                             onChangeText={(password) => this.setState({ user: {...this.state.user, password: password} })}
                         />
                     </Item>
-                    <Button style={styles.button} full rounded onPress={() => this.props.navigation.navigate('ConfirmaConsulta')}>
+                    <Button style={styles.button} full onPress={() => this.signIn(this.state.user)}>
                         <Text style={{ color: 'white', fontWeight: 'bold', }}>ENTRAR</Text>
                     </Button>
                     <TouchableOpacity style={styles.buttones}>

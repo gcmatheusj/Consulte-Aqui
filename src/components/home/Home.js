@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Constants } from "expo"
 import { StyleSheet, View, Image} from 'react-native'
 import { createStackNavigator } from 'react-navigation';
-import { Container, Header, Content, Button, Text, Title } from 'native-base';
+import { Container, Header, Content, Button, Text, Title, Left, Right, Body, Icon } from 'native-base';
 
 import calendar from '../../assets/calendar.png'
 import medic from '../../assets/medica.jpg'
@@ -24,7 +24,17 @@ class HomeScreen extends Component {
         <View>
           <View style={styles.statusBar} />
         </View>
-        <Header style = {styles.header} />
+        <Header style = {styles.header} >
+          <Left>
+            <Button transparent onPress={() => this.props.navigation.openDrawer()}>
+              <Icon name='menu'></Icon>
+            </Button>
+          </Left>
+          <Body>
+            <Title>Home</Title>
+          </Body>
+          <Right />
+        </Header>
         <Content>
         <View>
           <Image source={medic} style={{ height: 200, width: 400, marginBottom: 40 }} />
@@ -34,12 +44,12 @@ class HomeScreen extends Component {
           <View style={{flexDirection: 'row', justifyContent:'center'}}>
             <Button 
               bordered 
-              style={styles.button} onPress={() => this.props.naviagation.navigate('Consultas')}>
+              style={styles.button} onPress={() => this.props.navigation.navigate('Consultas')}>
                 <Text style={{color:'#00CAC9'}}> Consultas </Text>
             </Button>
             <Button 
               bordered 
-              style={styles.button} onPress={() => this.props.naviagation.navigate('Exames')}>
+              style={styles.button} onPress={() => this.props.navigation.navigate('Exames')}>
                 <Text style={{color:'#00CAC9'}}> Exames </Text>
             </Button>
           </View>

@@ -5,15 +5,15 @@ import LoginScreen from './src/components/login/Login'
 import DrawerMenuScreen from './src/components/menuDrawer/DrawerMenu'
 import EntrarScreen from './src/components/entrar/Entrar'
 import CadastroClienteScreen from './src/components/cadastro/CadastroPaciente'
-import CardiologistaScreen from './src/components/cardiologista/Cardiologista'
-import MedicoScreen from './src/components/cardiologista/Medico'
-import EletrocardiogramaScreen from './src/components/exames/Eletrocardiograma'
 import HomeScreen from './src/components/home/Home'
+<<<<<<< HEAD
 import AgendaExameScreen from './src/components/exames/agendarExame'
 import DadosConsultaScreen from './src/components/cardiologista/dadosConsulta'
 import DadosExameScreen from './src/components/exames/dadosExame'
 import confirmaConsultaScreen from './src/components/cardiologista/confirmacaoConsulta'
 import confirmaExameScreen from './src/components/exames/confirmacaoExame'
+=======
+>>>>>>> a222ce9477085751db7e97074b587a4b7c44822a
 
 export default class App extends Component {
 
@@ -29,8 +29,8 @@ const AppStackNavigator = createStackNavigator({
   MenuDrawer: DrawerMenuScreen,
   Entrar: EntrarScreen,
   CadastroCli: CadastroClienteScreen,
-  Eletrocardiograma: EletrocardiogramaScreen,
   Home: HomeScreen,
+<<<<<<< HEAD
   Cardiologista: CardiologistaScreen,
   Medico: MedicoScreen,
   AgendaExame: AgendaExameScreen,
@@ -38,6 +38,8 @@ const AppStackNavigator = createStackNavigator({
   DadosExame: DadosExameScreen,
   ConfirmaConsulta: confirmaConsultaScreen,
   ConfirmacaoExame: confirmaExameScreen,
+=======
+>>>>>>> a222ce9477085751db7e97074b587a4b7c44822a
 },
 {
   initialRouteName: 'Login',

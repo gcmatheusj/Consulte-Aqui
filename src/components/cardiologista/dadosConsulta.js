@@ -3,6 +3,7 @@ import { Constants } from "expo"
 import { StyleSheet, View, Image} from 'react-native'
 import { createStackNavigator } from 'react-navigation';
 import { Container, Header, Content, Button, Text, Title, Body, Icon, Left } from 'native-base';
+import { database, } from '../../../firebase'
 
 class DadosConsultaScreen extends Component {
   constructor(props){
@@ -10,34 +11,34 @@ class DadosConsultaScreen extends Component {
     this.state = {
         user: {}
     }
-}
+  }
+  
   static navigationOptions = {
-    header: null
+    header: null,
+  }
+
+  marcarConsulta = () => {
+    const { navigation } = this.props
+    const consulta = navigation.getParam('dadosConsulta')
+    const firebaseRef = database.ref('consulta/')
+    firebaseRef.push(consulta)
+    alert('Consulta Agendada!')
 }
 
   render() {
     return (
       <Container>
-        <View>
-          <View style={styles.statusBar} />
-        </View>
-        <Header style = {styles.header}>
-            <Body style={{height: 50}}>
-                <Title>Dados da Consulta</Title>
-            </Body>
-        </Header>
         <Content>
+        <Title style={{marginTop: 5, color: 'gray'}}>Confirme sua consulta</Title>
         <View style={styles.medicoInfo}>
-              <Title style={{ color: 'black', fontSize: 16, fontWeight: 'bold' }}>JOSÉ AUGUSTO VIEIRA</Title>
-              <Left>
-                <Text style={styles.crm}>CRM: 0000-0  Cardiologista</Text>
-              </Left>
+              <Text style={styles.contato}>José Algusto Vieira</Text>
+              <Text style={styles.crm}>CRM: 0000-0  Cardiologista</Text>
         </View>
         <View style={styles.agendaExame}>
             <Icon name='pin' style={{ color: 'gray', marginLeft: 10}}></Icon>
             <View style={styles.infoClinica}>
               <Left>
-                <Text style={{fontSize: 16, fontWeight: 'bold' }}>Centro Médico São Francisco</Text>
+                <Text style={styles.contato}>Centro Médico São Francisco</Text>
                 <Text style={styles.contato}>Rua São Francisco, 444, Centro</Text>
                 <Text style={styles.contato}>Penedo-AL</Text>
                 <Text style={styles.contato}>82 3551-4444</Text>
@@ -46,16 +47,10 @@ class DadosConsultaScreen extends Component {
               </Left>
             </View>
         </View>
-          <View style={{flexDirection: 'row', justifyContent:'center'}}>
             <Button 
-              style={styles.buttonConfirm} onPress={() => this.props.naviagation.navigate('Consultas')}>
+              style={styles.buttonConfirm} full onPress={() => this.marcarConsulta()}>
                 <Text style={{color:'white'}}> Confirmar </Text>
             </Button>
-            <Button 
-              style={styles.buttonback} onPress={() => this.props.naviagation.navigate('Exames')}>
-                <Text style={{color:'white'}}> Voltar </Text>
-            </Button>
-          </View>
         </Content>
       </Container>
     );
@@ -86,6 +81,9 @@ export default createStackNavigator({
       color: 'gray', 
       fontSize: 18
     },
+    contato: {
+      color: 'gray'
+    },  
     viewCalendar: {
       height: 100, 
       backgroundColor: 'white', 
@@ -96,11 +94,9 @@ export default createStackNavigator({
       backgroundColor: '#00CAC9'
     },
     buttonConfirm: {
-      alignItems:'center',
-      justifyContent: 'center',
-      backgroundColor: '#00CAC9',
-      marginRight: 10,
-      width: 150,
+      backgroundColor: '#2196F3',
+      marginRight: 16,
+      marginLeft: 16,
       marginTop: 55
     },
     buttonback: {
@@ -119,14 +115,15 @@ export default createStackNavigator({
     },
     infoClinica: {
       marginLeft: 30,
-      marginTop: 30,
+      marginTop: 10,
       alignItems: 'center'
     },
     medicoInfo: {
-      marginTop: 40
+      marginTop: 20,
+      alignItems: "center"
     },
     crm: {
       fontSize: 14,
-      fontWeight: 'bold'
+      color: 'gray'
     },
   })

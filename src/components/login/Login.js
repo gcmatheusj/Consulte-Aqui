@@ -52,22 +52,12 @@ class LoginScreen extends Component {
                         />
                     </View>
                     <View style={styles.formContainer}>
-                        <Button style={styles.button} full rounded onPress={() => this.props.navigation.navigate('Entrar')}>
+                        <Button style={styles.button} full onPress={() => this.props.navigation.navigate('Entrar')}>
                             <Icon name="mail"></Icon>
                             <Text style={{ color: 'white', fontWeight: 'bold', flex: 1}}>ENTRAR COM EMAIL</Text>
                             <Icon name="ios-arrow-forward"></Icon>
                         </Button>
-                        <Button style={styles.button} full rounded onPress={() => this.props.navigation.navigate('Entrar')}>
-                            <Icon name="logo-facebook"></Icon>
-                            <Text style={{ color: 'white', fontWeight: 'bold', flex: 1}}>CONTINUAR COM FACEBOOK</Text>
-                            <Icon name="ios-arrow-forward"></Icon>
-                        </Button>
-                        <Button style={styles.button} full rounded onPress={() => this.props.navigation.navigate('Entrar')}>
-                            <Icon name="logo-google"></Icon>
-                            <Text style={{ color: 'white', fontWeight: 'bold', flex: 1}}>CONTINUAR COM GOOGLE</Text>
-                            <Icon name="ios-arrow-forward"></Icon>
-                        </Button>
-                        <Button style={{ backgroundColor: '#1565C0', marginTop: 15,}} full rounded onPress={() => this.props.navigation.navigate('CadastroCli')}>
+                        <Button style={{ backgroundColor: '#1565C0', marginTop: 15,}} full onPress={() => this.props.navigation.navigate('CadastroCli')}>
                             <Icon name="person"></Icon>
                             <Text style={{ color: 'white', fontWeight: 'bold', flex: 1 }}>CADASTRAR</Text>
                             <Icon name="ios-arrow-forward"></Icon>

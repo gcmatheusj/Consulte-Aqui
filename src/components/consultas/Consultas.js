@@ -38,24 +38,19 @@ class ConsultaScreen extends Component {
                 </View>
                 <Header style={styles.header} >
                     <Left>
-                        <Button transparent onPress={() => this.props.navigation.openDrawer()}>
-                            <Icon name='menu'></Icon>
+                        <Button transparent onPress={() => this.props.navigation.navigate('Home')}>
+                            <Icon name='arrow-back'></Icon>
                         </Button>
                     </Left>
                     <Body>
                         <Title>Consultas</Title>
                     </Body>
-
-                    <Right>
-                        <Button transparent>
-                            <Icon name='md-search'></Icon>
-                        </Button>
-                    </Right>
+                    <Right />
                 </Header>
                 <Content contentContainerStyle={{ padding: 5 }}>
                     <Title style={{ padding: 5, alignContent: 'center', justifyContent: 'center', color: 'gray', alignContent: 'center', justifyContent: 'center', fontSize: 18 }}>Especialidades Médicas</Title>
                     <Card>
-                        <CardItem button onPress={() => this.props.navigation.navigate('CadastroCli')}>
+                        <CardItem button onPress={() => this.props.navigation.navigate('Cardiologista')}>
                             <Body>
                                 <Title style={styles.especialidadeMed}>
                                     Cardiologista
